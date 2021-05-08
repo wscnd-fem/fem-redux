@@ -1,6 +1,6 @@
 import { DECREMENT, INCREMENT, SET } from './action';
 
-export const initialState = { count: 0 };
+export const initialState = { count: 300 };
 
 export const reducer = (state = initialState, action) => {
   if (action.type === INCREMENT) {
