@@ -7,7 +7,7 @@ export const addNewItem = (name = '', price = 0) => ({
   type: NEW_ITEM_ADDED,
   payload: {
     name,
-    price: Number(price)
+    price: Number.isNaN(Number(price)) ? 0 : Number(price)
   }
 });
 
@@ -22,7 +22,7 @@ export const updatePrice = (uuid, price) => ({
   type: ITEM_PRICE_UPDATED,
   payload: {
     uuid,
-    price: Number(price)
+    price: Number.isNaN(Number(price)) ? 0 : Number(price)
   }
 });
 
@@ -30,6 +30,6 @@ export const updateQuantity = (uuid, quantity) => ({
   type: ITEM_QUANTITY_UPDATED,
   payload: {
     uuid,
-    quantity: Number(quantity)
+    quantity: Number.isNaN(Number(quantity)) ? 0 : Number(quantity)
   }
 });
