@@ -7,3 +7,9 @@ Since it's called inside a component it bring issues about separation of concern
 
 Can bring some kind of noise to the ReduxDevTools.
 Can prevent React's Context default behavior of rendering down the entire component tree.
+
+<br>
+## Good Practices
+
+Use `reselect ` functions everywhere to avoid going after the whole codebase for `state.x` because the state tree has been changed. It optimizes calculations by memoizing them and become only source of truth for calculations.
+Using good abstractions even before needed are good to optimize for change.

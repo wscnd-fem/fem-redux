@@ -5,6 +5,7 @@ import {
   updatePrice,
   updateQuantity
 } from '../store/items/actions';
+import { makeSelectItemTotal } from '../store/items/selectors';
 import { MenuItem } from './MenuItem';
 
 /**
@@ -17,13 +18,19 @@ import { MenuItem } from './MenuItem';
 //     remove: () => dispatch(removeItem(ownProps.uuid))
 //   };
 // };
+
 //
-const mapStateToProps = (state, ownProps) => {
-  console.log(ownProps);
-  return {
-    items: ownProps,
-    total: ownProps.quantity * ownProps.price
+
+const makeMapStateToProps = () => {
+  const memoizedProps = makeSelectItemTotal();
+  const makeStateToProps = (state, props) => {
+    const tmp = memoizedProps(state, props);
+    // console.log('tmp', tmp);
+    return {
+      total: tmp
+    };
   };
+  return makeStateToProps;
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
@@ -34,6 +41,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 });
 
 export const MenuItemConnected = connect(
-  mapStateToProps,
+  makeMapStateToProps,
   mapDispatchToProps
 )(MenuItem);
