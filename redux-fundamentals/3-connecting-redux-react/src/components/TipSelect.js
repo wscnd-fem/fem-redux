@@ -9,6 +9,7 @@ export const TipSelect = ({ tipPercentage, updateTip = () => {} }) => {
         value={tipPercentage}
         onChange={(event) => updateTip(event.target.value)}
       >
+        <Option value="0">0% I'm a monster</Option>
         <Option value="15">15%</Option>
         <Option value="20">20%</Option>
         <Option value="25">25%</Option>
